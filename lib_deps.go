@@ -56,6 +56,7 @@ func main() {
 		"linux":      {"core"},
 		"mylib":      {"tensorflow"},
 		"mylib2":     {"requests"},
+		"mylib3":     {"tensorflow"},
 	}
 
 	fmt.Printf("Start\n")
