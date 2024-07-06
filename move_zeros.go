@@ -17,7 +17,7 @@ func MoveZerosMem(arr []int) []int {
 	return res
 }
 
-func MoveZeros(arr []int) []int {
+func MoveZerosN2(arr []int) []int {
 	k := 1
 
 	for i := 0; i < len(arr); i++ {
@@ -37,7 +37,38 @@ func MoveZeros(arr []int) []int {
 	return arr
 }
 
+func MoveZerosN(arr []int) []int {
+	k := 0
+
+	for i := 0; i < len(arr); i++ {
+		if arr[i] != 0 {
+			arr[k] = arr[i]
+			k++
+			continue
+		}
+	}
+	for i := k; i < len(arr); i++ {
+		arr[i] = 0
+	}
+
+	return arr
+}
+
 func main() {
-	res := MoveZeros([]int{1, 2, 0, 0, 0, 0, 2, 0, 1, 0, 3, 0, 1, 111, 0, 222}) // To(Equal([]int{ 1, 2, 1, 1, 3, 1, 0, 0, 0, 0 })
-	fmt.Printf("res: %v\n", res)
+	example := []int{1, 2, 0, 0, 0, 0, 2, 0, 1, 0, 3, 0, 1, 111, 0, 222}
+
+	arrMem := make([]int, len(example))
+	copy(arrMem, example)
+	resMem := MoveZerosMem(arrMem)
+	fmt.Printf("res: %v\n", resMem)
+
+	arrNN := make([]int, len(example))
+	copy(arrNN, example)
+	resNN := MoveZerosMem(arrNN)
+	fmt.Printf("res: %v\n", resNN)
+
+	arrN := make([]int, len(example))
+	copy(arrN, example)
+	resN := MoveZerosN(arrN)
+	fmt.Printf("res: %v\n", resN)
 }
