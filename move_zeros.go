@@ -18,17 +18,18 @@ func MoveZerosMem(arr []int) []int {
 }
 
 func MoveZeros(arr []int) []int {
+	k := 1
 
 	for i := 0; i < len(arr); i++ {
 		if arr[i] == 0 {
-			for j := i + 1; j < len(arr); j++ {
+			for j := i + k; j < len(arr); j++ {
 				if arr[j] == 0 {
 					continue
 				}
 				arr[i] = arr[j]
 				arr[j] = 0
-				//i++
-				i = j + 1
+				i++
+				k = j - i
 			}
 		}
 	}
@@ -37,6 +38,6 @@ func MoveZeros(arr []int) []int {
 }
 
 func main() {
-	res := MoveZeros([]int{1, 2, 0, 1, 0, 0, 2, 0, 1, 0, 3, 0, 1}) // To(Equal([]int{ 1, 2, 1, 1, 3, 1, 0, 0, 0, 0 })
+	res := MoveZeros([]int{1, 2, 0, 0, 0, 0, 2, 0, 1, 0, 3, 0, 1, 111, 0, 222}) // To(Equal([]int{ 1, 2, 1, 1, 3, 1, 0, 0, 0, 0 })
 	fmt.Printf("res: %v\n", res)
 }
