@@ -42,13 +42,9 @@ func MoveZerosN(arr []int) []int {
 
 	for i := 0; i < len(arr); i++ {
 		if arr[i] != 0 {
-			arr[k] = arr[i]
+			arr[i], arr[k] = arr[k], arr[i]
 			k++
-			continue
 		}
-	}
-	for i := k; i < len(arr); i++ {
-		arr[i] = 0
 	}
 
 	return arr
@@ -64,7 +60,7 @@ func main() {
 
 	arrNN := make([]int, len(example))
 	copy(arrNN, example)
-	resNN := MoveZerosMem(arrNN)
+	resNN := MoveZerosN2(arrNN)
 	fmt.Printf("res: %v\n", resNN)
 
 	arrN := make([]int, len(example))
